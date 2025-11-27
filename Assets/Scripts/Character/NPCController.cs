@@ -1,3 +1,4 @@
+using RPG.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -34,7 +35,7 @@ namespace RPG.Character
                 return;
             }
 
-            print("Talk to NPC!");
+            EventManager.RaiseInitiateDialogue(inkJSON);
         }
     }
 }
