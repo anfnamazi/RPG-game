@@ -100,6 +100,8 @@ namespace RPG.UI
         {
             currentState = dialogueState;
             currentState.EnterState();
+
+            (currentState as UIDialogueState).SetStory(inkJSON);
         }
     }
 }
