@@ -36,7 +36,7 @@ namespace RPG.UI
 
         public override void SelectButton()
         {
-            throw new System.NotImplementedException();
+            UpdateStory();
         }
 
         public void SetStory(TextAsset inkJSON)
