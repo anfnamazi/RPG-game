@@ -11,5 +11,8 @@ namespace RPG.Utility
         public const int MAIN_MENU_INDEX_SCENE = 0;
         public const int ISLAND_INDEX_SCENE = 1;
         public const string CAMERA_TAG = "MainCamera";
+        public const string GAME_MANAGER_TAG = "GameManager";
+        public const string GAMEPLAY_ACTION_MAP = "Gameplay";
+        public const string UI_ACTION_MAP = "UI";
     }
 }
