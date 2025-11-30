@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Ink.Runtime;
 using RPG.Core;
 using RPG.Utility;
@@ -15,6 +16,7 @@ namespace RPG.UI
         private VisualElement choicesGroup;
         private Story currentStory;
         private PlayerInput playerInputCmp;
+        private bool hasChoices = false;
 
         public UIDialogueState(UIController ui)
             : base(ui) { }
@@ -23,8 +25,8 @@ namespace RPG.UI
         {
             dialogueContainer = controller.root.Q("dialogue-container");
             dialogueText = dialogueContainer.Q<Label>("dialogue-text");
-            nextButton = dialogueContainer.Q<Label>("dialogue-next-button");
-            choicesGroup = dialogueContainer.Q<Label>("choices-group");
+            nextButton = dialogueContainer.Q<VisualElement>("dialogue-next-button");
+            choicesGroup = dialogueContainer.Q<VisualElement>("choices-group");
 
             dialogueContainer.style.display = DisplayStyle.Flex;
 
@@ -48,6 +50,26 @@ namespace RPG.UI
         public void UpdateStory()
         {
             dialogueText.text = currentStory.Continue();
+
+            hasChoices = currentStory.currentChoices.Count > 0;
+            if (hasChoices)
+            {
+                HandleNewChoices(currentStory.currentChoices);
+            }
+            else
+            {
+                choicesGroup.style.display = DisplayStyle.None;
+                nextButton.style.display = DisplayStyle.Flex;
+            }
+        }
+
+        public void HandleNewChoices(List<Choice> choices)
+        {
+            nextButton.style.display = DisplayStyle.None;
+            choicesGroup.style.display = DisplayStyle.Flex;
+
+            choicesGroup.Clear();
+            controller.buttons?.Clear();
         }
     }
 }
