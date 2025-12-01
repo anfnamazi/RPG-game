@@ -70,6 +70,18 @@ namespace RPG.UI
 
             choicesGroup.Clear();
             controller.buttons?.Clear();
+
+            choices.ForEach(CreateNewChoiceButton);
+        }
+
+        private void CreateNewChoiceButton(Choice choice)
+        {
+            var button = new Button();
+            button.AddToClassList("menu-button");
+            button.text = choice.text;
+            button.style.marginRight = 20;
+
+            choicesGroup.Add(button);
         }
     }
 }
