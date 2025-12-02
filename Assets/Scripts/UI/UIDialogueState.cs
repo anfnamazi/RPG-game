@@ -49,6 +49,11 @@ namespace RPG.UI
 
         public void UpdateStory()
         {
+            if (hasChoices)
+            {
+                currentStory.ChooseChoiceIndex(controller.currentSelection);
+            }
+
             dialogueText.text = currentStory.Continue();
 
             hasChoices = currentStory.currentChoices.Count > 0;
@@ -72,6 +77,9 @@ namespace RPG.UI
             controller.buttons?.Clear();
 
             choices.ForEach(CreateNewChoiceButton);
+
+            controller.buttons = choicesGroup.Query<Button>().ToList();
+            controller.buttons[0].AddToClassList("active");
         }
 
         private void CreateNewChoiceButton(Choice choice)
