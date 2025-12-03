@@ -19,7 +19,7 @@ namespace RPG.UI
         public VisualElement playerInfoContainer;
         public Label playerHealthLabel;
         public Label playerPotionsLabel;
-        public List<Button> buttons;
+        public List<Button> buttons = new();
         public int currentSelection;
 
         private void Awake()
