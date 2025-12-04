@@ -29,4 +29,13 @@
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
+    <ui:VisualElement name="quest-item-container" style="width: 100%; height: 100%; justify-content: center; align-items: center; display: none;">
+        <ui:VisualElement class="primary-container" style="width: 600px; height: 500px; align-items: center;">
+            <ui:VisualElement style="width: 350px; height: 350px; background-image: url(&quot;project://database/Assets/Game%20Assets/Sprites/Paper%20BG.png?fileID=2800000&amp;guid=b1aa48f59209ca54f8ad1e5966d3e81d&amp;type=3#Paper BG&quot;); align-items: center;">
+                <ui:VisualElement style="width: 250px; height: 250px; background-image: url(&quot;project://database/Assets/Game%20Assets/Sprites/Quest%20Item%20Large.png?fileID=2800000&amp;guid=44d1dd07413f62049b0e1c783060a46b&amp;type=3#Quest Item Large&quot;);" />
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="quest-item-label" class="base-text" style="font-size: 40px; -unity-font-style: italic; margin-top: 40px;" />
+            <ui:Button text="Claim" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menu-button" style="position: absolute; bottom: -50px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
 </ui:UXML>
