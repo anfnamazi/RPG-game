@@ -1,3 +1,4 @@
+using RPG.Core;
 using RPG.Utility;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,23 +9,23 @@ namespace RPG.Quest
     public class TreasureChest : MonoBehaviour
     {
         public Animator animatorCmp;
-        private bool isInteractable = false;
+        private bool isIntractable = false;
         private bool hasBeenOpened = false;
         private void OnTriggerEnter()
         {
-            isInteractable = true;
+            isIntractable = true;
         }
 
         private void OnTriggerExit(Collider other)
         {
-            isInteractable = false;
+            isIntractable = false;
         }
 
         public void handleInteract(InputAction.CallbackContext context)
         {
-            if (!isInteractable || hasBeenOpened) return;
+            if (!isIntractable || hasBeenOpened) return;
 
-            print("Treasure Chest was opened!");
+            EventManager.RaiseTreasureChestUnlock();
             animatorCmp.SetBool(Constants.IS_SHAKING_ANIMATOR_PARAM, false);
             hasBeenOpened = true;
         }

@@ -13,6 +13,7 @@ namespace RPG.UI
         UIBaseState currentState;
         public UIMainMenuState mainMenuState;
         public UIDialogueState dialogueState;
+        public UIQuestItemState questItemState;
         public UIDocument uIDocumentCmp;
         public VisualElement root;
         public VisualElement mainMenuContainer;
@@ -34,20 +35,23 @@ namespace RPG.UI
 
             mainMenuState = new UIMainMenuState(this);
             dialogueState = new UIDialogueState(this);
+            questItemState = new UIQuestItemState(this);
         }
 
         private void OnEnable()
         {
             EventManager.OnChangeHealth += HandleChangePlayerHealth;
             EventManager.OnChangePotions += HandleChangePlayerPotions;
-            EventManager.InitiateDialogue += HandleInitiateDialogue;
+            EventManager.OnInitiateDialogue += HandleInitiateDialogue;
+            EventManager.OnTreasureChestUnlock += HandleInitiateQuestItem;
         }
 
         private void OnDisable()
         {
             EventManager.OnChangeHealth -= HandleChangePlayerHealth;
             EventManager.OnChangePotions -= HandleChangePlayerPotions;
-            EventManager.InitiateDialogue -= HandleInitiateDialogue;
+            EventManager.OnInitiateDialogue -= HandleInitiateDialogue;
+            EventManager.OnTreasureChestUnlock -= HandleInitiateQuestItem;
         }
 
         // Start is called before the first frame update
@@ -102,6 +106,12 @@ namespace RPG.UI
             currentState.EnterState();
 
             (currentState as UIDialogueState).SetStory(inkJSON);
+        }
+
+        private void HandleInitiateQuestItem()
+        {
+            currentState = questItemState;
+            currentState.EnterState();
         }
     }
 }

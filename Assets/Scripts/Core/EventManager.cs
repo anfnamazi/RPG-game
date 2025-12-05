@@ -7,7 +7,8 @@ namespace RPG.Core
     {
         public static event UnityAction<float> OnChangeHealth;
         public static event UnityAction<int> OnChangePotions;
-        public static event UnityAction<TextAsset> InitiateDialogue;
+        public static event UnityAction<TextAsset> OnInitiateDialogue;
+        public static event UnityAction OnTreasureChestUnlock;
 
         public static void RaiseOnChangeHealth(float newHealthPoint) =>
             OnChangeHealth?.Invoke(newHealthPoint);
@@ -16,6 +17,9 @@ namespace RPG.Core
             OnChangePotions?.Invoke(newPotion);
 
         public static void RaiseInitiateDialogue(TextAsset inkJSON) =>
-            InitiateDialogue.Invoke(inkJSON);
+            OnInitiateDialogue?.Invoke(inkJSON);
+
+        public static void RaiseTreasureChestUnlock() =>
+            OnTreasureChestUnlock?.Invoke();
     }
 }
