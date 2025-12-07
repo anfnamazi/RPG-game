@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using RPG.Core;
+using RPG.Quest;
 using RPG.Utility;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -108,10 +109,12 @@ namespace RPG.UI
             (currentState as UIDialogueState).SetStory(inkJSON);
         }
 
-        private void HandleInitiateQuestItem()
+        private void HandleInitiateQuestItem(QuestItemSO questItemSO)
         {
             currentState = questItemState;
             currentState.EnterState();
+
+            (currentState as UIQuestItemState).UpdateQuestItemText(questItemSO.itemName);
         }
     }
 }

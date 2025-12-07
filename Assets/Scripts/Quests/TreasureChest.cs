@@ -8,6 +8,7 @@ namespace RPG.Quest
 {
     public class TreasureChest : MonoBehaviour
     {
+        [SerializeField] private QuestItemSO questItemSO;
         public Animator animatorCmp;
         private bool isIntractable = false;
         private bool hasBeenOpened = false;
@@ -25,7 +26,7 @@ namespace RPG.Quest
         {
             if (!isIntractable || hasBeenOpened) return;
 
-            EventManager.RaiseTreasureChestUnlock();
+            EventManager.RaiseTreasureChestUnlock(questItemSO);
             animatorCmp.SetBool(Constants.IS_SHAKING_ANIMATOR_PARAM, false);
             hasBeenOpened = true;
         }

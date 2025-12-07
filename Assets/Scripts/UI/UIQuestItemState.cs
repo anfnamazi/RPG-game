@@ -28,4 +28,9 @@ public class UIQuestItemState : UIBaseState
         questItemContainer.style.display = DisplayStyle.None;
         playerInputCmp.SwitchCurrentActionMap(Constants.GAMEPLAY_ACTION_MAP);
     }
+
+    public void UpdateQuestItemText(string value)
+    {
+        questItemText.text = value;
+    }
 }
