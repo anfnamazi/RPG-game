@@ -1,4 +1,5 @@
 using System;
+using RPG.Core;
 using RPG.Utility;
 using UnityEngine;
 
@@ -6,27 +7,23 @@ namespace RPG.Character
 {
     public class EnemyController : MonoBehaviour
     {
-        [NonSerialized]
-        public float distanceFromPlayer;
+        [NonSerialized] public float distanceFromPlayer;
 
-        [NonSerialized]
-        public Vector3 originalPosition;
+        [NonSerialized] public Vector3 originalPosition;
 
-        [NonSerialized]
-        public Movement movementCmp;
+        [NonSerialized] public Movement movementCmp;
 
-        [NonSerialized]
-        public GameObject player;
+        [NonSerialized] public GameObject player;
 
-        [NonSerialized]
-        public Patrol patrolCmp;
+        [NonSerialized] public Patrol patrolCmp;
+        [NonSerialized] public Combat combatCmp;
+
+        [NonSerialized] public bool hasOpenUI;
 
         public CharacterStatsSO stats;
 
         private Health healthCmp;
 
-        [NonSerialized]
-        public Combat combatCmp;
         public float chaseRange = 2.5f;
         public float attackRange = 0.75f;
 
@@ -77,11 +74,13 @@ namespace RPG.Character
         void OnEnable()
         {
             healthCmp.OnStartDefeat += HandleStartDefeat;
+            EventManager.OnToggleUI += HandleOpenUI;
         }
 
         void OnDisable()
         {
             healthCmp.OnStartDefeat += HandleStartDefeat;
+            EventManager.OnToggleUI -= HandleOpenUI;
         }
 
         public void SwitchState(AIBaseState newState)
@@ -110,6 +109,11 @@ namespace RPG.Character
         private void HandleStartDefeat()
         {
             SwitchState(defeatState);
+        }
+
+        private void HandleOpenUI(bool isOpened)
+        {
+            hasOpenUI = isOpened;
         }
     }
 }

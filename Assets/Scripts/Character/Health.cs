@@ -12,14 +12,12 @@ namespace RPG.Character
     {
         public event UnityAction OnStartDefeat = () => { };
 
-        [NonSerialized]
-        public float healthPoints = 0f;
+        [NonSerialized] public float healthPoints = 0f;
         private Animator animatorCmp;
         private bool isDefeated = false;
         private BubbleEvent bubbleEventCmp;
 
-        [NonSerialized]
-        public Slider sliderCmp;
+        [NonSerialized] public Slider sliderCmp;
 
         public int potionCount = 1;
 

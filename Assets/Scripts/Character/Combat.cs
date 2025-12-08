@@ -7,13 +7,11 @@ namespace RPG.Character
 {
     public class Combat : MonoBehaviour
     {
-        [NonSerialized]
-        public float damage = 0f;
+        [NonSerialized] public float damage = 0f;
         private Animator animatorCmp;
         private BubbleEvent bubbleEventCmp;
 
-        [NonSerialized]
-        public bool isAttacking = false;
+        [NonSerialized] public bool isAttacking = false;
 
         private void Awake()
         {

@@ -1,3 +1,4 @@
+using RPG.Core;
 using RPG.UI;
 using RPG.Utility;
 using UnityEngine;
@@ -21,12 +22,16 @@ public class UIQuestItemState : UIBaseState
         questItemText = questItemContainer.Q<Label>("quest-item-label");
 
         questItemContainer.style.display = DisplayStyle.Flex;
+
+        EventManager.RaiseToggleUI(true);
     }
 
     public override void SelectButton()
     {
         questItemContainer.style.display = DisplayStyle.None;
         playerInputCmp.SwitchCurrentActionMap(Constants.GAMEPLAY_ACTION_MAP);
+
+        EventManager.RaiseToggleUI(false);
     }
 
     public void UpdateQuestItemText(string value)

@@ -12,13 +12,11 @@ namespace RPG.Character
         private NavMeshAgent agent;
         private Animator animatorCmp;
 
-        [NonSerialized]
-        public bool isMoving = false;
+        [NonSerialized] public bool isMoving = false;
 
         private Vector3 movementVector;
 
-        [NonSerialized]
-        public Vector3 originalForward;
+        [NonSerialized] public Vector3 originalForward;
         private bool clampAnimationSpeedAgain = true;
 
         private void Awake()

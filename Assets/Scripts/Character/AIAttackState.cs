@@ -24,6 +24,8 @@ namespace RPG.Character
                 return;
             }
 
+            if (enemy.hasOpenUI) return;
+
             enemy.combatCmp.StartAttack();
             Vector3 targetPosition = enemy.player.transform.position;
             targetPosition.y = enemy.transform.position.y;
