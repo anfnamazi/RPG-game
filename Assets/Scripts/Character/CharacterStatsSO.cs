@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace RPG.Character
 {
-    [CreateAssetMenu(fileName = "Character Stats", menuName = "Udemy RPG/Character Stats SO", order = 0)]
+    [CreateAssetMenu(fileName = "Character Stats", menuName = "RPG/Character Stats SO", order = 0)]
     public class CharacterStatsSO : ScriptableObject
     {
         public float health = 100f;

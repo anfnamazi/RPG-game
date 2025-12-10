@@ -24,7 +24,7 @@ namespace RPG.Quest
 
         public void handleInteract(InputAction.CallbackContext context)
         {
-            if (!isIntractable || hasBeenOpened) return;
+            if (!isIntractable || hasBeenOpened || !context.performed) return;
 
             EventManager.RaiseTreasureChestUnlock(questItemSO);
             animatorCmp.SetBool(Constants.IS_SHAKING_ANIMATOR_PARAM, false);
