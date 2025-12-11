@@ -21,6 +21,7 @@ namespace RPG.UI
         public VisualElement playerInfoContainer;
         public Label playerHealthLabel;
         public Label playerPotionsLabel;
+        public VisualElement questItemIcon;
         public List<Button> buttons = new();
         public int currentSelection;
 
@@ -33,6 +34,7 @@ namespace RPG.UI
             playerInfoContainer = root.Q<VisualElement>("player-info-container");
             playerHealthLabel = playerInfoContainer.Q<Label>("health-label");
             playerPotionsLabel = playerInfoContainer.Q<Label>("potions-label");
+            questItemIcon = playerInfoContainer.Q<VisualElement>("quest-item-icon");
 
             mainMenuState = new UIMainMenuState(this);
             dialogueState = new UIDialogueState(this);
@@ -44,7 +46,7 @@ namespace RPG.UI
             EventManager.OnChangeHealth += HandleChangePlayerHealth;
             EventManager.OnChangePotions += HandleChangePlayerPotions;
             EventManager.OnInitiateDialogue += HandleInitiateDialogue;
-            EventManager.OnTreasureChestUnlock += HandleInitiateQuestItem;
+            EventManager.OnTreasureChestUnlock += HandleTreasureChestUnlock;
         }
 
         private void OnDisable()
@@ -52,7 +54,7 @@ namespace RPG.UI
             EventManager.OnChangeHealth -= HandleChangePlayerHealth;
             EventManager.OnChangePotions -= HandleChangePlayerPotions;
             EventManager.OnInitiateDialogue -= HandleInitiateDialogue;
-            EventManager.OnTreasureChestUnlock -= HandleInitiateQuestItem;
+            EventManager.OnTreasureChestUnlock -= HandleTreasureChestUnlock;
         }
 
         // Start is called before the first frame update
@@ -109,12 +111,14 @@ namespace RPG.UI
             (currentState as UIDialogueState).SetStory(inkJSON);
         }
 
-        private void HandleInitiateQuestItem(QuestItemSO questItemSO)
+        private void HandleTreasureChestUnlock(QuestItemSO questItemSO)
         {
             currentState = questItemState;
             currentState.EnterState();
 
             (currentState as UIQuestItemState).UpdateQuestItemText(questItemSO.itemName);
+
+            questItemIcon.style.display = DisplayStyle.Flex;
         }
     }
 }
