@@ -38783,6 +38783,10 @@ PrefabInstance:
       propertyPath: inkJSON
       value: 
       objectReference: {fileID: 4900000, guid: 5849762927fca0587854a0ff0598e4e5, type: 3}
+    - target: {fileID: 8282018017447515903, guid: 92883b6bc26a8dfa5a0fb5444250244a, type: 3}
+      propertyPath: desiredQuestItem
+      value: 
+      objectReference: {fileID: 11400000, guid: b946164be87fa045a848c50c67786f44, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

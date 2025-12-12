@@ -44,6 +44,8 @@ namespace RPG.UI
         public void SetStory(TextAsset inkJSON)
         {
             currentStory = new Story(inkJSON.text);
+            currentStory.BindExternalFunction("VerifyQuest", VerifyQuest);
+
             UpdateStory();
         }
 
@@ -103,6 +105,11 @@ namespace RPG.UI
         {
             dialogueContainer.style.display = DisplayStyle.None;
             playerInputCmp.SwitchCurrentActionMap(Constants.GAMEPLAY_ACTION_MAP);
+        }
+
+        public void VerifyQuest()
+        {
+            Debug.Log("Verifying quest");
         }
     }
 }

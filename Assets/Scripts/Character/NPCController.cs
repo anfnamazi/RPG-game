@@ -1,4 +1,5 @@
 using RPG.Core;
+using RPG.Quest;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +8,9 @@ namespace RPG.Character
     public class NPCController : MonoBehaviour
     {
         public TextAsset inkJSON;
+        public QuestItemSO desiredQuestItem;
         private Canvas canvasCmp;
+        public bool hasQuestItem;
 
         private void Awake()
         {

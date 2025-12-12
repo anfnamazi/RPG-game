@@ -1,9 +1,12 @@
+EXTERNAL VerifyQuest()
+
 -> start
 === start ===
 A long time ago, a couple of orcs stole my candy. 
 It would be nice if Icould get it back. 
 By chance, have you come across my candy?
     * [Yes]
+        ~VerifyQuest()
         -> success
     * [No]
         -> noCandy
