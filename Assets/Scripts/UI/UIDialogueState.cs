@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Ink.Runtime;
+using RPG.Character;
 using RPG.Core;
 using RPG.Utility;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace RPG.UI
         private VisualElement choicesGroup;
         private Story currentStory;
         private PlayerInput playerInputCmp;
+        private NPCController npcController;
         private bool hasChoices = false;
 
         public UIDialogueState(UIController ui)
@@ -41,10 +43,12 @@ namespace RPG.UI
             UpdateStory();
         }
 
-        public void SetStory(TextAsset inkJSON)
+        public void SetStory(TextAsset inkJSON, GameObject npc)
         {
             currentStory = new Story(inkJSON.text);
             currentStory.BindExternalFunction("VerifyQuest", VerifyQuest);
+
+            npcController = npc.GetComponent<NPCController>();
 
             UpdateStory();
         }

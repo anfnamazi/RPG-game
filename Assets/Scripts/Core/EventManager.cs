@@ -8,7 +8,7 @@ namespace RPG.Core
     {
         public static event UnityAction<float> OnChangeHealth;
         public static event UnityAction<int> OnChangePotions;
-        public static event UnityAction<TextAsset> OnInitiateDialogue;
+        public static event UnityAction<TextAsset, GameObject> OnInitiateDialogue;
         public static event UnityAction<QuestItemSO> OnTreasureChestUnlock;
         public static event UnityAction<bool> OnToggleUI;
 
@@ -18,8 +18,8 @@ namespace RPG.Core
         public static void RaiseOnChangePotions(int newPotion) =>
             OnChangePotions?.Invoke(newPotion);
 
-        public static void RaiseInitiateDialogue(TextAsset inkJSON) =>
-            OnInitiateDialogue?.Invoke(inkJSON);
+        public static void RaiseInitiateDialogue(TextAsset inkJSON, GameObject gameObject) =>
+            OnInitiateDialogue?.Invoke(inkJSON, gameObject);
 
         public static void RaiseTreasureChestUnlock(QuestItemSO questItemSO) =>
             OnTreasureChestUnlock?.Invoke(questItemSO);

@@ -38,7 +38,7 @@ namespace RPG.Character
                 return;
             }
 
-            EventManager.RaiseInitiateDialogue(inkJSON);
+            EventManager.RaiseInitiateDialogue(inkJSON, gameObject);
         }
     }
 }
