@@ -113,7 +113,7 @@ namespace RPG.UI
 
         public void VerifyQuest()
         {
-            Debug.Log("Verifying quest");
+            npcController.CheckPlayerForQuestItem();
         }
     }
 }

@@ -40,5 +40,12 @@ namespace RPG.Character
 
             EventManager.RaiseInitiateDialogue(inkJSON, gameObject);
         }
+
+        public bool CheckPlayerForQuestItem()
+        {
+            if (hasQuestItem) return true;
+
+            return true;
+        }
     }
 }
