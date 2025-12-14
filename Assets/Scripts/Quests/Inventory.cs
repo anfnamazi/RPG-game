@@ -22,5 +22,17 @@ namespace RPG.Quest
         {
             items.Add(questItem);
         }
+
+        public bool HasItem(QuestItemSO desiredItem)
+        {
+            bool hasItem = false;
+
+            items.ForEach(item =>
+            {
+                if (desiredItem.name == item.name) hasItem = true;
+            });
+
+            return hasItem;
+        }
     }
 }

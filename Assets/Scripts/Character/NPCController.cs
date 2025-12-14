@@ -1,5 +1,6 @@
 using RPG.Core;
 using RPG.Quest;
+using RPG.Utility;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -45,7 +46,10 @@ namespace RPG.Character
         {
             if (hasQuestItem) return true;
 
-            return true;
+            var inventoryCmp = GameObject.FindWithTag(Constants.PLAYER_TAG)
+                .GetComponent<Inventory>();
+
+            return inventoryCmp.HasItem(desiredQuestItem);
         }
     }
 }
