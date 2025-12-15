@@ -1,4 +1,5 @@
 EXTERNAL VerifyQuest()
+VAR questCompleted = false
 
 -> start
 === start ===
@@ -7,7 +8,11 @@ It would be nice if Icould get it back.
 By chance, have you come across my candy?
     * [Yes]
         ~VerifyQuest()
-        -> success
+        {questCompleted:
+            ->success
+        - else:
+            ->failure
+        }
     * [No]
         -> noCandy
 -> END

@@ -113,7 +113,7 @@ namespace RPG.UI
 
         public void VerifyQuest()
         {
-            npcController.CheckPlayerForQuestItem();
+            currentStory.variablesState["questCompleted"] = npcController.CheckPlayerForQuestItem();
         }
     }
 }
