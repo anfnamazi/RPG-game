@@ -29,6 +29,6 @@ Thank you so much! here's a reward.
 Looks like you don't have it. Come back if you find my candy.
 -> END
 
-=== postCompletaion ===
+=== postCompletion ===
 Thanks for helping me earlier. Good luck whith your adventure!
 -> END

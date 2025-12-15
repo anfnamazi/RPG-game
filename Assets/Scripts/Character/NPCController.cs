@@ -49,7 +49,9 @@ namespace RPG.Character
             var inventoryCmp = GameObject.FindWithTag(Constants.PLAYER_TAG)
                 .GetComponent<Inventory>();
 
-            return inventoryCmp.HasItem(desiredQuestItem);
+            hasQuestItem = inventoryCmp.HasItem(desiredQuestItem);
+
+            return hasQuestItem;
         }
     }
 }

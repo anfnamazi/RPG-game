@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Ink.Runtime;
 using RPG.Character;
-using RPG.Core;
 using RPG.Utility;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -49,6 +48,8 @@ namespace RPG.UI
             currentStory.BindExternalFunction("VerifyQuest", VerifyQuest);
 
             npcController = npc.GetComponent<NPCController>();
+
+            if (npcController.hasQuestItem) currentStory.ChoosePathString("postCompletion");
 
             UpdateStory();
         }
