@@ -379,6 +379,7 @@ GameObject:
   - component: {fileID: 1140674146802661389}
   - component: {fileID: 1284182610179207714}
   - component: {fileID: 8282018017447515903}
+  - component: {fileID: 6786200846689082968}
   m_Layer: 0
   m_Name: NPC Pumpkin Jack
   m_TagString: Untagged
@@ -460,6 +461,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69982312ad5127f9f8c4626541eec740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inkJSON: {fileID: 0}
+  desiredQuestItem: {fileID: 0}
+  hasQuestItem: 0
+--- !u!114 &6786200846689082968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2160498970466689459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6039c6359e6f990eacf3f3f2cd16590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward: {fileID: 0}
 --- !u!1 &2357293589485651926
 GameObject:
   m_ObjectHideFlags: 0

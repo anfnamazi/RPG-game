@@ -38779,6 +38779,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6786200846689082968, guid: 92883b6bc26a8dfa5a0fb5444250244a, type: 3}
+      propertyPath: reward
+      value: 
+      objectReference: {fileID: 11400000, guid: 0f09eacb82070cd84a9aca77f34609c4, type: 2}
     - target: {fileID: 8282018017447515903, guid: 92883b6bc26a8dfa5a0fb5444250244a, type: 3}
       propertyPath: inkJSON
       value: 
