@@ -42,7 +42,12 @@ namespace RPG.Character
 
         private void HandleReward(RewardSO reward)
         {
-            Debug.Log("reward received!");
+            healthCmp.healthPoints += reward.bonusHealth;
+            healthCmp.potionCount += reward.bonusPotions;
+            combatCmp.damage += reward.bonusDamage;
+
+            EventManager.RaiseOnChangeHealth(healthCmp.healthPoints);
+            EventManager.RaiseOnChangePotions(healthCmp.potionCount);
         }
     }
 }
