@@ -14,5 +14,7 @@ namespace RPG.Utility
         public const string GAME_MANAGER_TAG = "GameManager";
         public const string GAMEPLAY_ACTION_MAP = "Gameplay";
         public const string UI_ACTION_MAP = "UI";
+        public const string AXE_TAG = "Axe";
+        public const string SWORD_TAG = "Sword";
     }
 }

@@ -1,5 +1,6 @@
 using RPG.Core;
 using RPG.Quest;
+using RPG.Utility;
 using UnityEngine;
 
 namespace RPG.Character
@@ -9,6 +10,10 @@ namespace RPG.Character
         public CharacterStatsSO stats;
         private Health healthCmp;
         private Combat combatCmp;
+        private GameObject axeWeapon;
+        private GameObject swordWeapon;
+
+        public Weapons weapon = Weapons.Axe;
 
         private void Awake()
         {
@@ -19,6 +24,9 @@ namespace RPG.Character
 
             healthCmp = GetComponent<Health>();
             combatCmp = GetComponent<Combat>();
+
+            axeWeapon = GameObject.FindGameObjectWithTag(Constants.AXE_TAG);
+            swordWeapon = GameObject.FindGameObjectWithTag(Constants.SWORD_TAG);
         }
 
         private void Start()
@@ -28,6 +36,8 @@ namespace RPG.Character
 
             EventManager.RaiseOnChangeHealth(healthCmp.healthPoints);
             EventManager.RaiseOnChangePotions(healthCmp.potionCount);
+
+            SetWeapon();
         }
 
         void OnEnable()
@@ -37,7 +47,6 @@ namespace RPG.Character
         void OnDisable()
         {
             EventManager.OnReward -= HandleReward;
-
         }
 
         private void HandleReward(RewardSO reward)
@@ -48,6 +57,26 @@ namespace RPG.Character
 
             EventManager.RaiseOnChangeHealth(healthCmp.healthPoints);
             EventManager.RaiseOnChangePotions(healthCmp.potionCount);
+
+            if (reward.forceWeaponSwitch)
+            {
+                weapon = reward.weapons;
+                SetWeapon();
+            }
+        }
+
+        private void SetWeapon()
+        {
+            if (weapon == Weapons.Axe)
+            {
+                axeWeapon.SetActive(true);
+                swordWeapon.SetActive(false);
+            }
+            else
+            {
+                axeWeapon.SetActive(false);
+                swordWeapon.SetActive(true);
+            }
         }
     }
 }
