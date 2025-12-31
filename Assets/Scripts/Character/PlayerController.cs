@@ -1,3 +1,4 @@
+using System;
 using RPG.Core;
 using RPG.Quest;
 using RPG.Utility;
@@ -8,8 +9,8 @@ namespace RPG.Character
     public class PlayerController : MonoBehaviour
     {
         public CharacterStatsSO stats;
-        private Health healthCmp;
-        private Combat combatCmp;
+        [NonSerialized] public Health healthCmp;
+        [NonSerialized] public Combat combatCmp;
         private GameObject axeWeapon;
         private GameObject swordWeapon;
 
@@ -34,8 +35,8 @@ namespace RPG.Character
             healthCmp.healthPoints = stats.health;
             combatCmp.damage = stats.damage;
 
-            EventManager.RaiseOnChangeHealth(healthCmp.healthPoints);
-            EventManager.RaiseOnChangePotions(healthCmp.potionCount);
+            EventManager.RaiseChangeHealth(healthCmp.healthPoints);
+            EventManager.RaiseChangePotions(healthCmp.potionCount);
 
             SetWeapon();
         }
@@ -55,8 +56,8 @@ namespace RPG.Character
             healthCmp.potionCount += reward.bonusPotions;
             combatCmp.damage += reward.bonusDamage;
 
-            EventManager.RaiseOnChangeHealth(healthCmp.healthPoints);
-            EventManager.RaiseOnChangePotions(healthCmp.potionCount);
+            EventManager.RaiseChangeHealth(healthCmp.healthPoints);
+            EventManager.RaiseChangePotions(healthCmp.potionCount);
 
             if (reward.forceWeaponSwitch)
             {

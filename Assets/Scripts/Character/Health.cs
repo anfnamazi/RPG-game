@@ -47,7 +47,7 @@ namespace RPG.Character
 
             if (CompareTag(Constants.PLAYER_TAG))
             {
-                EventManager.RaiseOnChangeHealth(healthPoints);
+                EventManager.RaiseChangeHealth(healthPoints);
             }
 
             if (sliderCmp != null)
@@ -85,8 +85,8 @@ namespace RPG.Character
 
             potionCount--;
             healthPoints += healAmount;
-            EventManager.RaiseOnChangeHealth(healthPoints);
-            EventManager.RaiseOnChangePotions(potionCount);
+            EventManager.RaiseChangeHealth(healthPoints);
+            EventManager.RaiseChangePotions(potionCount);
         }
     }
 }

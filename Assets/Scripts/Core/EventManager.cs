@@ -12,11 +12,12 @@ namespace RPG.Core
         public static event UnityAction<QuestItemSO> OnTreasureChestUnlock;
         public static event UnityAction<bool> OnToggleUI;
         public static event UnityAction<RewardSO> OnReward;
+        public static event UnityAction<Collider, int> OnPortalEnter;
 
-        public static void RaiseOnChangeHealth(float newHealthPoint) =>
+        public static void RaiseChangeHealth(float newHealthPoint) =>
             OnChangeHealth?.Invoke(newHealthPoint);
 
-        public static void RaiseOnChangePotions(int newPotion) =>
+        public static void RaiseChangePotions(int newPotion) =>
             OnChangePotions?.Invoke(newPotion);
 
         public static void RaiseInitiateDialogue(TextAsset inkJSON, GameObject gameObject) =>
@@ -30,5 +31,8 @@ namespace RPG.Core
 
         public static void RaiseReward(RewardSO reward) =>
             OnReward?.Invoke(reward);
+
+        public static void RaisePortalEnter(Collider player, int nextSceneIndex) =>
+            OnPortalEnter?.Invoke(player, nextSceneIndex);
     }
 }
