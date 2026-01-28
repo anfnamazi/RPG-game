@@ -17,10 +17,10 @@ namespace RPG.Core
 
         void HandlePortalEnter(Collider player, int nextSceneIndex)
         {
-            var playerController = gameObject.GetComponent<PlayerController>();
+            var playerController = player.GetComponent<PlayerController>();
 
             PlayerPrefs.SetFloat("Health", playerController.healthCmp.healthPoints);
-            PlayerPrefs.SetInt("Poisons", playerController.healthCmp.potionCount);
+            PlayerPrefs.SetInt("Potions", playerController.healthCmp.potionCount);
             PlayerPrefs.SetFloat("Damage", playerController.combatCmp.damage);
             PlayerPrefs.SetInt("Weapon", (int)playerController.weapon);
             PlayerPrefs.SetInt("SceneIndex", nextSceneIndex);
